@@ -1,7 +1,7 @@
 const passport = require('passport')
 const passportJWT = require('passport-jwt');
 const { ExtractJwt, Strategy: JwtStrategy } = passportJWT;
-const db = require('./usersDb');
+const db = require('../services/database/users');
 
 const config = {};
 config.secretOrKey = process.env.JWT_SECRET || 'your_jwt_secret';

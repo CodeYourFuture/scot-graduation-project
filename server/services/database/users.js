@@ -1,7 +1,23 @@
 const { Pool } = require("pg");
-const config = require("../__db/db-config")[process.env.NODE_ENV || "development"];
-
+const config = require("../../config");
 const pool = new Pool(config);
+
+/**
+ * This is used for testing the Client<->API connection, but this operation
+ * won't be allowed in the final version of the project as it is a 
+ * security risk to expose all users
+ */
+const getAllUsers = () => {
+    return new Promise((resolve, reject) => {
+        pool.query("SELECT id, email FROM users", (error, result) => {
+            if(error) {
+                 reject(error)
+            } else {
+                resolve(result.rows);
+            }
+        });
+    })
+}
 
 const getUserByEmail = (email) => {
   return new Promise(resolve => {
@@ -38,6 +54,7 @@ const getUserById = (id) => {
 module.exports = {
   getUserByEmail,
   createUser,
-  getUserById
+  getUserById,
+  getAllUsers
 };
 
