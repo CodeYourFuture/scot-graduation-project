@@ -1,7 +1,17 @@
+-- Drop tables in case they already exist
+drop table if exists users;
 drop table if exists bookings;
 drop table if exists hotels;
 drop table if exists customers;
 
+
+-- Create tables
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email    VARCHAR(200) NOT NULL,
+  password VARCHAR(200) NOT NULL,
+  roles VARCHAR(200) NULL
+);
 
 CREATE TABLE customers (
   id       SERIAL PRIMARY KEY,
