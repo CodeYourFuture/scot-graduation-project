@@ -4,35 +4,30 @@
 2. Clone your fork into your local machine.
 3. Add an `upstream` remote pointing to the main CYF repo (to be able to pull updates from your team members)
 
-## First task: After Cloning
+After cloning the project, we will create the local database that the project will use.
 
-Your team will want their own DB name, tables and data. So one team member needs to:
-- open `server/db/setup-local-db.sql` and replace `cyf_test` with your own DB name
-- open `server/config.js` and replace `cyf_test` with your own DB name
-- commit and push above changes.
-- Let your team members pull the changes.
+## Database
 
-Everyone will need to initialize their database locally with the following:
-- `cd` into `server`
-- Create your database: `createdb cyf_test` (replace `cyf_test` with the name of your database)
+- Open the terminal, and `cd` into `server`
+- Create your database: `createdb final_project`
 - `npm run recreate-db:local` (this will create and populate your new team's DB with the data your colleague added)
 
 > Your actual database schema will go to `server/db/recreate-schema.sql` and you can add sample test data in  `server/db/populate-db.sql`
 
-# Development workflow:
+## Test it all works
 
-Anytime you are ready to work again on the project just do:
-- `npm run dev` in `server` (changes you make should be picked up automatically)
-- open another terminal window --> `npm run dev` in `client`
+Now let us test that the whole stack works (the `React frontend` connects to the `Node API` which connects to the `Postgres Database` )
 
-If you want to work a new ticket/feature:
-- `git checkout master`
-- `git pull upstream`
-- `git checkout -b my-new-feature`
-- `npm run recreate-db:local` in server
-- `npm run dev` in server then in client
+- Open a terminal, navigate  to the root of the project and do `npm install`
+- `cd` into `server` and run `npm run dev`
+- On a different terminal, `cd` into `client` and run `npm run dev`
 
-> NEVER work on your master branch directly. All work should be done on a feature branch.
+Once the React website opens in a browser. Navigate to the _Status_ page, and you should see two users listed in the page. This means everything works fine.
+
+# Development Process
+Read the [Development process](CONTRIBUTING.md).
+
+> IMPORTANT: Make sure you read and understand the development proces guidelines before starting any work. Ask mentors for explanation if you have any questions.
 
 # Project structure
 
@@ -51,6 +46,10 @@ The client is a React app created with [create-react-app](https://create-react-a
 - The tests live with the modules. Some projects put the tests in a top-level folder `__tests` but we chose that they live with the components they test, i.e. a test for `About.js` will be in a file called `About.test.js` at the same level in the folder.
 
 - Styles are in the folder `client/styles`. Each file in that folder will contain styles related to a specific component (and have the same name), i.e. a component called `About.js` might define styles in `styles/About.css` and import them.
+
+### Component library
+
+We will use [Semantic UI](https://react.semantic-ui.com/) component library for the projects. Check out the documentation to get familiar with it.
 
 ## Server
 
