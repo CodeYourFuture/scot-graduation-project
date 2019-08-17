@@ -7,7 +7,7 @@ The development process, in a nutshell, is as follows:
 1. Start development
 1. Once your work is commit and ready for review, open a Pull Request (PR)
 1. Fix any comments raised on your PR by mentors, commit your changes, and push to your branch
-1. Once your PR is approced, merge to master 
+1. Once your PR is approved, merge to master 
 1. Go to #1 and repeat
 
 Here are more details:
