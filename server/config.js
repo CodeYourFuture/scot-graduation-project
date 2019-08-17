@@ -2,7 +2,7 @@ const config = {
 	development: {
 		user: "postgres",
 		host: "localhost",
-		database: "cyf_test",
+		database: "final_project",
 		password: "password",
 		port: 5432,
 	},
