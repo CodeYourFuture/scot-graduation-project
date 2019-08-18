@@ -68,7 +68,10 @@ Once you have finished development and you are happy everything works well:
     - If all is good, then the mentor will approve the PR and merges it to `CodeYourFuture/master` branch
     - Otherwise they will add comments on the PR that you should address in new commits, and push to the PR
 
-> Our Continous Integration (CI) process will build your PR on heroku so that you (and mentors) can check if they work or not.
+
+> We run a formatter ([prettier](https://prettier.io/docs/en/index.html)) and a linter ([eslint](https://eslint.org/docs/user-guide/getting-started)) automatically on your code when you create a commit. This is called a pre-commit hook, and we set it using a package called [Husky](https://github.com/typicode/husky).
+
+> Our Continous Integration (CI) process will build your PR on heroku so that you (and mentors) can check if they work or not. Read more about [Continuous Integration](https://www.thoughtworks.com/continuous-integration).
 
 ## Code Reviews
 
@@ -93,3 +96,7 @@ If you get an error that your branch can not be merged, then that means that the
     - `git push origin branch_name`
 1. Go back to your Pull Request and make sure it shows the green box that it can be merged.
 
+
+### Continuous Integration
+
+When you create a PR, 
