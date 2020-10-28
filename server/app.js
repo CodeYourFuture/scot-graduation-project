@@ -2,7 +2,6 @@ const SERVER_PORT = process.env.PORT || 4000;
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 
 const app = express();
 const api = require("./api");
@@ -13,7 +12,7 @@ require("./auth/passport");
 /**
  * register middleware
  */
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 /**
