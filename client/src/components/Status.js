@@ -29,7 +29,7 @@ const Status = () => {
         )}
         <h6>
           API health check:{" "}
-          {!status ? "No Status received from server" : this.state.status}
+          {!status ? "No Status received from server" : status}
         </h6>
       </header>
     </div>
