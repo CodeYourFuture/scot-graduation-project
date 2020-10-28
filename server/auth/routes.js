@@ -35,7 +35,7 @@ router.post("/register", async (req, res, next) => {
 
 	const user = {
 		email,
-		password
+		password,
 	};
 
 	db.createUser(user)
