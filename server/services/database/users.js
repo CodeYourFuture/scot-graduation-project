@@ -8,55 +8,31 @@ const pool = new Pool(config);
  * security risk to expose all users
  */
 const getAllUsers = () => {
-	return new Promise((resolve, reject) => {
-		pool.query("SELECT id, email FROM users", (error, result) => {
-			if (error) {
-				reject(error);
-			} else {
-				resolve(result.rows);
-			}
-		});
-	});
+	return pool.query("SELECT id, email FROM users")
+		.then((result) => result.rows);
 };
 
 const getUserByEmail = (email) => {
-	return new Promise((resolve) => {
-		pool.query(
-			"SELECT * FROM users where email = $1",
-			[email],
-			(error, result) => {
-				resolve(result.rows[0]);
-			}
-		);
-	});
+	return pool.query(
+		"SELECT * FROM users where email = $1",
+		[email])
+		.then((result) => result.rows[0]);
 };
 
 const createUser = ({ email, password }) => {
-	return new Promise((resolve, reject) => {
-		pool.query(
-			"INSERT INTO users (email, password) values ($1, $2)",
-			[email, password],
-			(error, result) => {
-				if (error) {
-					reject(error);
-				}
-				console.log(result);
-				resolve(result.rows);
-			}
-		);
-	});
+	return pool.query(
+		"INSERT INTO users (email, password) values ($1, $2)",
+		[email, password])
+		.then((result) => result.rows);
 };
 
 const getUserById = (id) => {
-	return new Promise((resolve, reject) => {
-		pool.query("SELECT * FROM users where id = $1", [id], (error, result) => {
-			if (error) {
-				console.error(error);
-				return reject(error);
-			}
-			resolve(result.rows[0]);
+	return pool.query("SELECT * FROM users where id = $1", [id])
+		.then((result) => result.rows[0])
+		.catch((error) => {
+			console.error(error);
+			throw(error);
 		});
-	});
 };
 
 module.exports = {

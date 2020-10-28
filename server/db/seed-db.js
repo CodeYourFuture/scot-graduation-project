@@ -17,14 +17,10 @@ queryDb(createSchema)
 	.then(() => process.exit(0));
 
 function queryDb(query) {
-	return new Promise((resolve, error) => {
-		pool.query(query, function(err) {
-			if (err) {
-				console.log("error: ", err);
-				error(err);
-				process.exit(1);
-			}
-			resolve();
+	return pool.query(query)
+		.catch((error) => {
+			console.log("error: ", error);
+			process.exit(1);
+			throw error;
 		});
-	});
 }
