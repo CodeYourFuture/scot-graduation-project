@@ -16,7 +16,7 @@ router.get(
 	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		res.send("All good");
-	}
+	},
 );
 
 module.exports = router;
