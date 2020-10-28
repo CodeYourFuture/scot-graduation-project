@@ -17,10 +17,9 @@ queryDb(createSchema)
 	.then(() => process.exit(0));
 
 function queryDb(query) {
-	return pool.query(query)
-		.catch((error) => {
-			console.log("error: ", error);
-			process.exit(1);
-			throw error;
-		});
+	return pool.query(query).catch((error) => {
+		console.log("error: ", error);
+		process.exit(1);
+		throw error;
+	});
 }
