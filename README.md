@@ -1,39 +1,43 @@
 # Get started
 
-1. Create a fork of this project
-2. Clone your fork into your local machine.
-3. Add an `upstream` remote pointing to the main CYF repo (to be able to pull updates from your team members)
-
+Clone this project on your local machine.
 After cloning the project, we will create the local database that the project will use.
 
 ## Database
 
 - Open the terminal, and `cd` into `server`
-- Create your database: `createdb final_project`
-- `npm run recreate-db:local` (this will create and populate your new team's DB with the data your colleague added)
+- Create your database: 
+    - Option 1:
+        - `createdb final_project`
+    - Option 2:
+        ```bash
+      sudo -i -u postgres
+      create database dbname  
+      ```
+- `npm run recreate-db:local` (this will create and populate your new team's DB)
 
-> Your actual database schema will go to `server/db/recreate-schema.sql` and you can add sample test data in  `server/db/populate-db.sql`
+> Your actual database schema will go in `server/db/recreate-schema.sql` and you can add sample test data in `server/db/populate-db.sql`
 
 ## Test it all works
 
 Now let us test that the whole stack works (the `React frontend` connects to the `Node API` which connects to the `Postgres Database` )
 
-- Open a terminal, navigate  to the root of the project and do `npm install`
-- `cd` into `server` and run `npm run dev`
-- On a different terminal, `cd` into `client` and run `npm run dev`
+- Open a terminal, navigate to `client` and do `npm install`
+- Then run `npm run dev`
+- Open a new terminal, `cd` into `server` and run `npm run dev`
 
 Once the React website opens in a browser. Navigate to the _Status_ page, and you should see two users listed in the page. This means everything works fine.
 
 # Development Process
 Read the [Development process](CONTRIBUTING.md).
 
-> IMPORTANT: Make sure you read and understand the development proces guidelines before starting any work. Ask mentors for explanation if you have any questions.
+> IMPORTANT: Make sure you read and understand the development process guidelines before starting any work. Ask mentors for explanation if you have any questions.
 
 # Project structure
 
 The project is divided into `client` folder for the React frontend, and a `server` folder for the node API and database side.
 
-> This structure is called a mono repo. As opposed to having two repos (one for client, another for server), we opted for a `monorepo`. You can read more about [monorepos](https://gomonorepo.org/).
+> This structure is called a mono repo. As opposed to having two repos (one for client, another for server), we opted for a `monorepo`.
 
 ## The Client
 
@@ -41,9 +45,7 @@ The client is a React app created with [create-react-app](https://create-react-a
 
 - The `components` live in the `components` folder. When the project gets bigger, we might separate them into logical folders (i.e. `components/admin` for admin-related components, and `components/profile` for user profile-related components)
 
-- The `api` folder contains modules to call a specific API, i.e. when you add a new endpoint to list, craete and update _jobs_ then you can add a new module called `api/jobs.js` that can contain methods such as `getJobs, createJob, deleteJob ...`.
-
-- The tests live with the modules. Some projects put the tests in a top-level folder `__tests` but we chose that they live with the components they test, i.e. a test for `About.js` will be in a file called `About.test.js` at the same level in the folder.
+- The `api` folder contains modules to call a specific API, i.e. when you add a new endpoint to list, create and update _jobs_ then you can add a new module called `api/jobs.js` that can contain methods such as `getJobs, createJob, deleteJob ...`.
 
 - Styles are in the folder `client/styles`. Each file in that folder will contain styles related to a specific component (and have the same name), i.e. a component called `About.js` might define styles in `styles/About.css` and import them.
 

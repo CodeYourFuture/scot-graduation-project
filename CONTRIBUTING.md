@@ -4,8 +4,11 @@ The development process, in a nutshell, is as follows:
 
 1. Pick a story from Trello
 1. Create a new *feature-branch* (NEVER push directly to `master`)
+1. The branch should have the name `your-name/feature-you-work-on`
+    - Example: `rares/add-homepage`
 1. Start development
-1. Once your work is commit and ready for review, open a Pull Request (PR)
+1. Once your work is finished and ready for review, push your branch
+1. Open a Pull Request (PR) to the `master` branch
 1. Fix any comments raised on your PR by mentors, commit your changes, and push to your branch
 1. Once your PR is approved, merge to master 
 1. Go to #1 and repeat
@@ -26,10 +29,10 @@ A user story will be added to your project Trello board. It should contain requi
 When you are ready to start work on a new ticket/feature you will _always_ create a new feature branch (never on `master`).
 
 - `git checkout master` - switch to the master branch 
-- `git pull upstream` - this will get the latest changes from `upstream` to your local master branch (upstream is the repo in the `CodeYourFuture` org, not your fork)
-- `git checkout -b name-of-feature` - create a branch for your feature
+- `git pull` - this will get the latest changes from `origin` to your local master branch
+- `git checkout -b your-name/name-of-feature` - create a branch for your feature
 
-> Naming convention: Your branch name should describe what you are building, and it should be all in small letters with words separated with a dash, i.e. if you picked up a story about implementing authentication for admins, then your branch can be called `admin-auth`
+> Naming convention: Your branch name should describe what you are building, and it should be all in small letters with words separated with a dash, i.e. if you picked up a story about implementing authentication for admins, then your branch can be called `your-name/admin-auth`
 
 Now you can work on your local branch to implement the task you have picked.
 
@@ -59,13 +62,13 @@ This short message above is the `Subject` of the commit. You can (and should) ad
 
 Once you have finished development and you are happy everything works well:
 
-1. Push the branch to your repo (`origin`)
-1. Open a Pull Request against `CodeYourFuture/master` (upstream)
+1. Push the branch to the repo
+1. Open a Pull Request against `master`
 1. Copy/paste the PR link to the ticket on Trello
 1. Move the story card to `Mentor Approval` column
 1. Ask the mentors for *Code Review*
     - Notify them on Slack to review the PR (also add them as reviewers on the PR if you know their github usernames)
-    - If all is good, then the mentor will approve the PR and merges it to `CodeYourFuture/master` branch
+    - If all is good, then the mentor will approve the PR and merges it to the `master` branch
     - Otherwise they will add comments on the PR that you should address in new commits, and push to the PR
 
 
@@ -88,15 +91,10 @@ The mentors will come back with comments on your Pull Request. It is important t
 If you get an error that your branch can not be merged, then that means that there are some changes that your team members merged into `upstream` since the time you created your branch. You need to update your local branch from `upstream/master`
 
 1. `git branch` - make sure you are on the correct branch. If you are not, then `git checkout feature-branch-name` to switch to the correct branch
-1. `git pull upstream master` - gets the latest changes from upstream
+1. `git pull master` - gets the latest changes from origin
 1. Fix any merge conflicts
 1. Commit and push after fixing the merge conflicts
     - `git add file.js` - (add specific files instead of `git add .`) 
     - `git commit -m "Implement authentication flow"`
     - `git push origin branch_name`
 1. Go back to your Pull Request and make sure it shows the green box that it can be merged.
-
-
-### Continuous Integration
-
-When you create a PR, 
