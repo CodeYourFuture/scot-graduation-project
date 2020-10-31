@@ -12,11 +12,17 @@ After cloning the project, we will create the local database that the project wi
     - Option 2:
         ```bash
       sudo -i -u postgres
-      create database dbname  
+      create database final_project  
       ```
+      
+- Create a DB user:
+    ```bash
+    psql final_project
+    create user app_user password 'password';
+    GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO app_user;
+    ```
 - `npm run recreate-db:local` (this will create and populate your new team's DB)
-
-> Your actual database schema will go in `server/db/recreate-schema.sql` and you can add sample test data in `server/db/populate-db.sql`
 
 ## Test it all works
 
@@ -57,7 +63,10 @@ We will use [Semantic UI](https://react.semantic-ui.com/) component library for 
 
 The API is implemented using [Express](https://expressjs.com/) framework. We have added some extra functionality, such as a simple authentication solution.
 
-- `db` folder contains the script to run to create the database, the schema and seed it with sample data. Whenever you want to add a new database table or change an existing, you will likely change it in `db/recreate-schema.sql`.
+- `db` folder contains the script to create the database and to seed it with sample data
+    - Your actual database schema will go in `server/db/recreate-schema.sql`
+    - and you can add sample test data in `server/db/populate-db.sql`
+    - run `npm run recreate-db:local` - you'll need to do this anytime you change any of the above files!
 
 - `services` folder contain `database` services. These are modules to manipulate a certain entity in the database. For example, if you have a table called `documents`, you might add a module `services/database/documents` that will expose methods like `addDocument, getDocumentById` and implement an `SQL` statement to perform the required functionality.
 
@@ -124,3 +133,5 @@ Don't forget to set the `content-type` to `raw` and `application/json`
 This will bring you back a `token`. Copy the token you get in the response.
 
 - Now, we can use this token for the `status/protected` route. Do a *GET* request to `http://localhost:4000/api/status/protected` and add a `header` with the name `Authorization` and the value: `Bearer the_token_from_previous step`, i.e. `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTU2NTkwOTU4OX0.qidn4r7nrolFByyfd956Kh8BkOhwcaUSzyUK0V7su1c`
+
+Here is a sample Pull Request to implement Login on the client: https://github.com/CodeYourFuture/scot-graduation-project/pull/34
