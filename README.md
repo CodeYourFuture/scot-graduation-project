@@ -6,6 +6,7 @@ After cloning the project, we will create the local database that the project wi
 ## Database
 
 - Open the terminal, and `cd` into `server`
+- `npm install`
 - Create your database: 
     - Option 1:
         - `createdb final_project`
@@ -15,22 +16,21 @@ After cloning the project, we will create the local database that the project wi
       create database final_project  
       ```
       
-- Create a DB user:
-    ```bash
-    psql final_project
-    create user app_user password 'password';
-    GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
-    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO app_user;
-    ```
+- Create a DB user - run the below 
+    1. `psql final_project`
+    2. `create user app_user password 'password';`
+    3. `GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;`
+    4. `GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO app_user;`
+
 - `npm run recreate-db:local` (this will create and populate your new team's DB)
 
 ## Test it all works
 
 Now let us test that the whole stack works (the `React frontend` connects to the `Node API` which connects to the `Postgres Database` )
 
-- Open a terminal, navigate to `client` and do `npm install`
-- Then run `npm run dev`
-- Open a new terminal, `cd` into `server` and run `npm run dev`
+- In the server folder, run `npm run dev`
+- Open a new terminal window or tab, navigate to `client` and do `npm install`
+- Then run `npm run dev` in the client folder
 
 Once the React website opens in a browser. Navigate to the _Status_ page, and you should see two users listed in the page. This means everything works fine.
 
