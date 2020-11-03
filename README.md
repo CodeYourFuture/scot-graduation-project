@@ -1,3 +1,6 @@
+TODO:
+- SemanticUI uses class components in some examples - could we use a different library?
+
 # Get started
 
 Clone this project on your local machine.
