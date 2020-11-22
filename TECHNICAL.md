@@ -16,3 +16,23 @@ It also follows PRs made to that repo, and deploys a temporary build to `http://
 - run the root `npm install` command
 - run the `heroku-postbuild` command which will build the React client app, and put it in the build folder (from which it will get server by Express)
 - run the `npm run recreate-db` command from the server folder (see Procfile) which will recreate the schema and populate with data
+
+#### Steps to follow after "Using this template":
+
+Once you "Use this template" and create an actual GitHub repository:
+
+**Heroku:**
+1. Create a new app on Heroku and connect it to this repository
+2. Enable the "Postgres" build-pack
+3. Enable automatic deploys from the master branch
+4. Create review apps
+
+**GitHub "Settings" pane:**
+1. Make sure nobody can push/merge to master directly
+2. Ensure PRs need at least 1 approver before they can be merged
+3. Add the `@codeyourfuture` "mentors" and "scot-mentors" groups as admins to the projects
+4. Add students as "write" contributors to the project
+5. Optional - PRs need checks to pass before they can be merged in (will work once we enable GitHub Actions) 
+
+#### TODO for next year:
+- github action check that lints both projects and tries to build/run them
